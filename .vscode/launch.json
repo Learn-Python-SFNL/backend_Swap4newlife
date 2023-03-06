@@ -5,7 +5,7 @@
             "name": "backend",
             "type": "python",
             "request": "launch",
-            "module": "beckend",
+            "module": "backend",
             "justMyCode": true,
             "console": "internalConsole"
         }
