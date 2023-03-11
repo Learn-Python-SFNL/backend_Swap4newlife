@@ -1,5 +1,5 @@
 from flask import Flask
-from backend.server import app
+from backend.categories import app
 
 import logging
 
@@ -12,4 +12,4 @@ def main():
 
 
 if __name__=="__main__":
-    app.run(debug=True)
+    app.run()
