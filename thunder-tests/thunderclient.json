@@ -12,5 +12,19 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "77ac7495-ffb8-4c91-9304-aef0b625cf6b",
+    "colId": "42aa7772-82a6-4b8c-b82d-a242c28131ff",
+    "containerId": "",
+    "name": "get_all",
+    "url": "{{endpoint}}/api/v1/categories/",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2023-03-11T11:39:52.730Z",
+    "modified": "2023-03-11T11:40:25.574Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
