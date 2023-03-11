@@ -1,9 +1,10 @@
-from flask import Flask, jsonify, request, abort
+from flask import Flask, jsonify, request, abort, Blueprint
 from http import HTTPStatus
 from uuid import uuid4
 
+view = Blueprint('categories', __name__)
 
-app = Flask(__name__)
+
 
 storage = [
     {
@@ -48,12 +49,12 @@ storage = [
     }
 ]
 
-@app.route('/api/v1/categories/', methods=['GET'])
+@view.get('/')
 def get_all_categories():
     return jsonify(storage)
 
 
-@app.get('/api/v1/categories/<string:uid>')
+@view.get('/<string:uid>')
 def get_categories_by_id(uid):
     categories = list(filter(lambda category: category['id'] == uid, storage))
     if len(categories) == 0:
@@ -61,7 +62,7 @@ def get_categories_by_id(uid):
     return jsonify(categories[0])
 
 
-@app.post('/api/v1/categories/')
+@view.post('/')
 def add_categories():
     category = {
         'id': uuid4().hex,
@@ -71,7 +72,7 @@ def add_categories():
     return jsonify(category), 200
 
 
-@app.put('/api/v1/categories/<string:uid>')
+@view.put('/<string:uid>')
 def update_categories(uid):
     for category in storage:
         if category["id"] == uid:
@@ -80,13 +81,10 @@ def update_categories(uid):
     return category, 200
 
 
-@app.delete('/api/v1/categories/<string:uid>')
+@view.delete('/<string:uid>')
 def delete_category(uid):
     for category in storage:
         if category["id"] == uid:
             storage.remove(category)
     return {}, 204
 
-
-if __name__ == '__main__':
-    app.run(debug=True)
