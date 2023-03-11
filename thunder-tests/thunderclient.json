@@ -1,0 +1,16 @@
+[
+  {
+    "_id": "5a1f6833-e1ce-4d0d-abfc-c90eeee4d64e",
+    "colId": "9f964e59-53a8-4132-96f3-81c63e920947",
+    "containerId": "",
+    "name": "get_all",
+    "url": "{{endpoint}}/api/v1/products/",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2023-03-11T10:49:36.556Z",
+    "modified": "2023-03-11T10:53:15.686Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  }
+]
