@@ -1,5 +1,7 @@
 from flask import Flask
+
 from backend.categories import app
+
 
 import logging
 
@@ -12,4 +14,4 @@ def main():
 
 
 if __name__=="__main__":
-    app.run()
+    app.run(port=8000)
