@@ -1,21 +1,22 @@
-from flask import Flask, jsonify, request, abort, Blueprint
 from http import HTTPStatus
 from uuid import uuid4
+
+from flask import Blueprint, abort, jsonify, request
 
 view = Blueprint('products', __name__)
 
 products = [
-        {
-            'title': 'Книга по Python',
-            'products': 'Книга',
-            'id': uuid4().hex
-        },
+    {
+        'title': 'Книга по Python',
+        'products': 'Книга',
+        'id': uuid4().hex,
+    },
 
-        {
-            'title': 'Книга по JS',
-            'products': 'Книга',
-            'id': uuid4().hex
-        }
+    {
+        'title': 'Книга по JS',
+        'products': 'Книга',
+        'id': uuid4().hex,
+    },
 ]
 
 storage = {product['id']: product for product in products}
@@ -25,12 +26,14 @@ storage = {product['id']: product for product in products}
 def get_all_products():
     return jsonify(list(storage.values()))
 
+
 @view.get('/<string:uid>')
 def get_product_by_id(uid):
     product = storage.get(uid)
     if product:
         return jsonify(product), 200
-    abort(404)
+    abort(HTTPStatus.NOT_FOUND)
+
 
 @view.post('/')
 def add_product():
@@ -39,11 +42,12 @@ def add_product():
     storage[product['id']] = product
     return jsonify(product), 200
 
+
 @view.put('/<string:uid>')
 def update_product(uid):
     product = storage.get(uid)
     if uid not in storage:
-        abort(404)
+        abort(HTTPStatus.NOT_FOUND)
 
     payload = request.json
     product.update(payload)
@@ -53,7 +57,7 @@ def update_product(uid):
 @view.delete('/<string:uid>')
 def delete_product(uid):
     if uid not in storage:
-        abort(404)
+        abort(HTTPStatus.NOT_FOUND)
 
     storage.pop(uid)
     return {}, 204

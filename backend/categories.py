@@ -1,10 +1,9 @@
-from flask import Flask, jsonify, request, abort, Blueprint
 from http import HTTPStatus
 from uuid import uuid4
 
+from flask import Blueprint, abort, jsonify, request
+
 view = Blueprint('categories', __name__)
-
-
 
 storage = [
     {
@@ -46,8 +45,9 @@ storage = [
     {
         'id': uuid4().hex,
         'title': 'Детская одежда',
-    }
+    },
 ]
+
 
 @view.get('/')
 def get_all_categories():
@@ -57,8 +57,8 @@ def get_all_categories():
 @view.get('/<string:uid>')
 def get_categories_by_id(uid):
     categories = list(filter(lambda category: category['id'] == uid, storage))
-    if len(categories) == 0:
-        abort(404)
+    if not categories:
+        abort(HTTPStatus.NOT_FOUND)
     return jsonify(categories[0])
 
 
@@ -75,16 +75,16 @@ def add_categories():
 @view.put('/<string:uid>')
 def update_categories(uid):
     for category in storage:
-        if category["id"] == uid:
-            category['title'] = request.json.get('title',category['title'])
+        if category['id'] == uid:
+            category['title'] = request.json.get('title', category['title'])
 
-    return category, 200
+            return category, 200
+    abort(HTTPStatus.NOT_FOUND)
 
 
 @view.delete('/<string:uid>')
 def delete_category(uid):
     for category in storage:
-        if category["id"] == uid:
+        if category['id'] == uid:
             storage.remove(category)
     return {}, 204
-
