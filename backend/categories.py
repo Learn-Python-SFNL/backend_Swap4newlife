@@ -64,9 +64,13 @@ def get_categories_by_id(uid):
 
 @view.post('/')
 def add_categories():
+    payload = request.json
+    if not payload:
+        abort(HTTPStatus.BAD_REQUEST)
+
     category = {
         'id': uuid4().hex,
-        'title': request.json['title'],
+        'title': payload['title'],
     }
     storage.append(category)
     return jsonify(category), 200
@@ -74,9 +78,13 @@ def add_categories():
 
 @view.put('/<string:uid>')
 def update_categories(uid):
+    payload = request.json
+    if not payload:
+        abort(HTTPStatus.BAD_REQUEST)
+
     for category in storage:
         if category['id'] == uid:
-            category['title'] = request.json.get('title', category['title'])
+            category['title'] = payload.get('title', category['title'])
 
             return category, 200
     abort(HTTPStatus.NOT_FOUND)

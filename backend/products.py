@@ -38,6 +38,9 @@ def get_product_by_id(uid):
 @view.post('/')
 def add_product():
     product = request.json
+    if not product:
+        abort(HTTPStatus.BAD_REQUEST)
+
     product['id'] = uuid4().hex
     storage[product['id']] = product
     return jsonify(product), 200
@@ -45,11 +48,14 @@ def add_product():
 
 @view.put('/<string:uid>')
 def update_product(uid):
+    payload = request.json
+    if not payload:
+        abort(HTTPStatus.BAD_REQUEST)
+
     product = storage.get(uid)
-    if uid not in storage:
+    if not product:
         abort(HTTPStatus.NOT_FOUND)
 
-    payload = request.json
     product.update(payload)
     return jsonify(product), 200
 
