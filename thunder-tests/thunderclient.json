@@ -32,11 +32,11 @@
     "colId": "42aa7772-82a6-4b8c-b82d-a242c28131ff",
     "containerId": "",
     "name": "get_by_id",
-    "url": "{{endpoint}}/api/v1/categories/41648d3ff25f4c6ba784efb2f0c963ec",
+    "url": "{{endpoint}}/api/v1/categories/a96a9b072a0d465aa62e43d51cf7dbde",
     "method": "GET",
     "sortNum": 30000,
     "created": "2023-03-13T18:42:28.193Z",
-    "modified": "2023-03-13T18:42:48.368Z",
+    "modified": "2023-03-14T11:56:51.319Z",
     "headers": [],
     "params": [],
     "tests": []
