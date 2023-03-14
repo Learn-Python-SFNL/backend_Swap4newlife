@@ -26,5 +26,76 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "e3c717d3-e703-4403-a260-45fcaf561ff2",
+    "colId": "42aa7772-82a6-4b8c-b82d-a242c28131ff",
+    "containerId": "",
+    "name": "get_by_id",
+    "url": "{{endpoint}}/api/v1/categories/a96a9b072a0d465aa62e43d51cf7dbde",
+    "method": "GET",
+    "sortNum": 30000,
+    "created": "2023-03-13T18:42:28.193Z",
+    "modified": "2023-03-14T11:56:51.319Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "9b903f7e-7a96-4b10-810f-d8bfe0700b80",
+    "colId": "42aa7772-82a6-4b8c-b82d-a242c28131ff",
+    "containerId": "",
+    "name": "add_category",
+    "url": "{{endpoint}}/api/v1/categories/",
+    "method": "POST",
+    "sortNum": 40000,
+    "created": "2023-03-13T18:43:10.365Z",
+    "modified": "2023-03-13T18:45:24.714Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"title\": \"фисташковое мороженное\"\n}\n\n",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "77149634-9a38-4a37-b44d-d7590d50d1e3",
+    "colId": "42aa7772-82a6-4b8c-b82d-a242c28131ff",
+    "containerId": "",
+    "name": "del",
+    "url": "{{endpoint}}/api/v1/categories/373673c2f391450da5a0a44c3fa6ede3",
+    "method": "DELETE",
+    "sortNum": 50000,
+    "created": "2023-03-13T18:45:42.167Z",
+    "modified": "2023-03-13T18:49:11.603Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "\n",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "11f3850c-fefe-4a56-9ce1-b7d7adc820a7",
+    "colId": "42aa7772-82a6-4b8c-b82d-a242c28131ff",
+    "containerId": "",
+    "name": "update",
+    "url": "{{endpoint}}/api/v1/categories/5ddf88f54a8a420e935a076312fcf92a",
+    "method": "PUT",
+    "sortNum": 35000,
+    "created": "2023-03-13T18:46:00.261Z",
+    "modified": "2023-03-13T18:52:20.314Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"title\": \"круассан\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
