@@ -59,9 +59,10 @@ def get_all_categories():
 @view.get('/<string:uid>')
 def get_categories_by_id(uid):
     category = storage.get(uid)
-    if category:
-        return jsonify(category), 200
-    abort(HTTPStatus.NOT_FOUND)
+    if not category:
+        abort(HTTPStatus.NOT_FOUND)
+
+    return jsonify(category), 200
 
 
 @view.post('/')
