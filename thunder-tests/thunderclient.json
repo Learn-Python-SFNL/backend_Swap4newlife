@@ -41,7 +41,40 @@
     "params": [],
     "tests": []
   },
+{
+    "_id": "735e5cb0-dcba-4137-9204-f51634d6aea1",
+    "colId": "9f964e59-53a8-4132-96f3-81c63e920947",
+    "containerId": "",
+    "name": "get_product",
+    "url": "{{endpoint}}/api/v1/products/b896574a4620469b81ab161b7e933437",
+    "method": "GET",
+    "sortNum": 20000,
+    "created": "2023-03-14T11:27:24.424Z",
+    "modified": "2023-03-16T17:40:05.435Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
   {
+    "_id": "1ac361ee-442b-4b60-b678-8bb6e7c10ada",
+    "colId": "9f964e59-53a8-4132-96f3-81c63e920947",
+    "containerId": "",
+    "name": "add",
+    "url": "{{endpoint}}/api/v1/products/",
+    "method": "POST",
+    "sortNum": 30000,
+    "created": "2023-03-14T11:30:05.007Z",
+    "modified": "2023-03-14T11:36:19.495Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"products\": \"Книга\",\n    \"title\": \"Книга по css\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+{
     "_id": "9b903f7e-7a96-4b10-810f-d8bfe0700b80",
     "colId": "42aa7772-82a6-4b8c-b82d-a242c28131ff",
     "containerId": "",
@@ -61,6 +94,24 @@
     "tests": []
   },
   {
+    "_id": "264f9920-f93f-4f2d-9c46-f17850cd2794",
+    "colId": "9f964e59-53a8-4132-96f3-81c63e920947",
+    "containerId": "",
+    "name": "update",
+    "url": "{{endpoint}}/api/v1/products/f38cd61e92c9474a8242829c36a70a57",
+    "method": "PUT",
+    "sortNum": 40000,
+    "created": "2023-03-14T17:50:35.107Z",
+    "modified": "2023-03-16T17:40:40.994Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"products\": \"Книга\",\n    \"title\": \"Книга по c++\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
     "_id": "77149634-9a38-4a37-b44d-d7590d50d1e3",
     "colId": "42aa7772-82a6-4b8c-b82d-a242c28131ff",
     "containerId": "",
@@ -80,6 +131,22 @@
     "tests": []
   },
   {
+    "_id": "193bf822-561a-4e1a-9d8f-8dbfe1e7e7fe",
+    "colId": "9f964e59-53a8-4132-96f3-81c63e920947",
+    "containerId": "",
+    "name": "delete",
+    "url": "{{endpoint}}/api/v1/products/b896574a4620469b81ab161b7e933437",
+    "method": "DELETE",
+    "sortNum": 25000,
+    "created": "2023-03-14T18:11:12.083Z",
+    "modified": "2023-03-16T17:40:15.639Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  }
+]
+{
+
     "_id": "11f3850c-fefe-4a56-9ce1-b7d7adc820a7",
     "colId": "42aa7772-82a6-4b8c-b82d-a242c28131ff",
     "containerId": "",

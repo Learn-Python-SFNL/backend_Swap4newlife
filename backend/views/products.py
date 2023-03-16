@@ -3,9 +3,12 @@ from uuid import uuid4
 
 from flask import Blueprint, abort, jsonify, request
 
+from backend.storages.products import ProductStorage
+
 view = Blueprint('products', __name__)
 
-products = [
+
+init_products = [
     {
         'title': 'Книга по Python',
         'products': 'Книга',
@@ -19,30 +22,32 @@ products = [
     },
 ]
 
-storage = {product['id']: product for product in products}
+
+storage = ProductStorage(init_products)
 
 
 @view.get('/')
 def get_all_products():
-    return jsonify(list(storage.values()))
+    return jsonify(storage.get_all())
 
 
 @view.get('/<string:uid>')
 def get_product_by_id(uid):
-    product = storage.get(uid)
-    if product:
-        return jsonify(product), 200
-    abort(HTTPStatus.NOT_FOUND)
+    product = storage.get_by_id(uid)
+    if not product:
+        abort(HTTPStatus.NOT_FOUND)
+
+    return jsonify(product), 200
 
 
 @view.post('/')
 def add_product():
-    product = request.json
-    if not product:
+    payload = request.json
+    if not payload:
         abort(HTTPStatus.BAD_REQUEST)
 
-    product['id'] = uuid4().hex
-    storage[product['id']] = product
+    product = storage.add(payload)
+
     return jsonify(product), 200
 
 
@@ -52,18 +57,16 @@ def update_product(uid):
     if not payload:
         abort(HTTPStatus.BAD_REQUEST)
 
-    product = storage.get(uid)
+    product = storage.update(uid, payload)
     if not product:
         abort(HTTPStatus.NOT_FOUND)
 
-    product.update(payload)
     return jsonify(product), 200
 
 
 @view.delete('/<string:uid>')
 def delete_product(uid):
-    if uid not in storage:
+    if not storage.delete(uid):
         abort(HTTPStatus.NOT_FOUND)
 
-    storage.pop(uid)
     return {}, 204
