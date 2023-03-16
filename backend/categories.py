@@ -5,7 +5,7 @@ from flask import Blueprint, abort, jsonify, request
 
 view = Blueprint('categories', __name__)
 
-storage = [
+categories = [
     {
         'id': uuid4().hex,
         'title': 'Книги',
@@ -48,31 +48,31 @@ storage = [
     },
 ]
 
+storage = {category['id']: category for category in categories}
+
 
 @view.get('/')
 def get_all_categories():
-    return jsonify(storage)
+    return jsonify(list(storage.values()))
 
 
 @view.get('/<string:uid>')
 def get_categories_by_id(uid):
-    categories = list(filter(lambda category: category['id'] == uid, storage))
-    if not categories:
+    category = storage.get(uid)
+    if not category:
         abort(HTTPStatus.NOT_FOUND)
-    return jsonify(categories[0])
+
+    return jsonify(category), 200
 
 
 @view.post('/')
 def add_categories():
-    payload = request.json
-    if not payload:
+    category = request.json
+    if not category:
         abort(HTTPStatus.BAD_REQUEST)
 
-    category = {
-        'id': uuid4().hex,
-        'title': payload['title'],
-    }
-    storage.append(category)
+    category['id'] = uuid4().hex
+    storage[category['title']] = category
     return jsonify(category), 200
 
 
@@ -82,17 +82,18 @@ def update_categories(uid):
     if not payload:
         abort(HTTPStatus.BAD_REQUEST)
 
-    for category in storage:
-        if category['id'] == uid:
-            category['title'] = payload.get('title', category['title'])
+    category = storage.get(uid)
+    if not category:
+        abort(HTTPStatus.NOT_FOUND)
 
-            return category, 200
-    abort(HTTPStatus.NOT_FOUND)
+    category.update(payload)
+    return jsonify(category), 200
 
 
 @view.delete('/<string:uid>')
 def delete_category(uid):
-    for category in storage:
-        if category['id'] == uid:
-            storage.remove(category)
+    if uid not in storage:
+        abort(HTTPStatus.NOT_FOUND)
+
+    storage.pop(uid)
     return {}, 204
