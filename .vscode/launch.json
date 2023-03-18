@@ -8,6 +8,14 @@
             "module": "backend",
             "justMyCode": true,
             "console": "internalConsole"
+        },
+        {
+            "name": "db",
+            "type": "python",
+            "request": "launch",
+            "module": "backend.models",
+            "justMyCode": true,
+            "console": "internalConsole"
         }
     ]
 }

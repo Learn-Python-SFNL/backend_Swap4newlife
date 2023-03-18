@@ -1,3 +1,4 @@
+from typing import Any
 from uuid import uuid4
 
 
@@ -6,19 +7,21 @@ class CategoryStorage:
     def __init__(self, categories) -> None:
         self.storage = {category['id']: category for category in categories}
 
-    def get_all(self) -> list[dict]:
+    def get_all(self) -> list[dict[str, Any]]:
         return list(self.storage.values())
 
-    def get_by_id(self, uid: str) -> dict | None:
+    def get_by_id(self, uid: str) -> dict[str, Any] | None:
         self.category = self.storage.get(uid)
         return self.category
 
-    def add(self, category: dict) -> dict | None:
+    def add(self, category: dict[str, Any]) -> dict[str, Any] | None:
         category['id'] = uuid4().hex
         self.storage[category['id']] = category
         return category
 
-    def update(self, uid: str, new_category: dict) -> dict | None:
+    def update(
+        self, uid: str, new_category: dict[str, Any],
+    ) -> dict[str, Any] | None:
         old_category = self.storage.get(uid)
         if not old_category:
             return None
