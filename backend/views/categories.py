@@ -89,8 +89,6 @@ def update_categories(uid):
     category = storage.update(uid, payload)
     if not category:
         abort(HTTPStatus.NOT_FOUND)
-
-
     return jsonify(category), 200
 
 

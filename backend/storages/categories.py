@@ -1,5 +1,4 @@
 from uuid import uuid4
-
 class CategoryStorage:
 
     def __init__(self, categories) -> None:
@@ -24,7 +23,6 @@ class CategoryStorage:
 
         old_category.update(new_category)
         return old_category
-
 
     def delete(self, uid: str) -> bool:
         if uid not in self.storage:
