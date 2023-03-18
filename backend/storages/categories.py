@@ -27,5 +27,8 @@ class CategoryStorage:
 
 
     def delete(self, uid: str) -> bool:
-        category = self.storage.pop(uid)
-        return category
+        if uid not in self.storage:
+            return False
+
+        self.storage.pop(uid)
+        return True
