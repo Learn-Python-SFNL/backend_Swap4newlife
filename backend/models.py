@@ -3,7 +3,7 @@ from sqlalchemy import Column, Integer, String
 from backend.db import Base, engine
 
 
-class User(Base):
+class Categories(Base):
 
     __tablename__ = 'categories'
 
