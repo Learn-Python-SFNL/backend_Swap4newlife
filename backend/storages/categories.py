@@ -1,4 +1,6 @@
 from uuid import uuid4
+
+
 class CategoryStorage:
 
     def __init__(self, categories) -> None:
