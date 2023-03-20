@@ -21,7 +21,7 @@
             "name": "db_products",
             "type": "python",
             "request": "launch",
-            "module": "backend.ProductsModel",
+            "module": "backend.productsmodel",
             "justMyCode": true,
             "console": "internalConsole"
         }
