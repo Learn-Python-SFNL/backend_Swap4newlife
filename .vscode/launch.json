@@ -16,6 +16,14 @@
             "module": "backend.models",
             "justMyCode": true,
             "console": "internalConsole"
+        },
+        {
+            "name": "db_products",
+            "type": "python",
+            "request": "launch",
+            "module": "backend.productsmodel",
+            "justMyCode": true,
+            "console": "internalConsole"
         }
     ]
 }
