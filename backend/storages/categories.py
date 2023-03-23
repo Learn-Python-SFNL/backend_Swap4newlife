@@ -1,6 +1,10 @@
 from typing import Any
 from uuid import uuid4
 
+from backend.db import db_session
+
+from backend.models import Categories
+
 
 class CategoryStorage:
 
@@ -35,3 +39,12 @@ class CategoryStorage:
 
         self.storage.pop(uid)
         return True
+
+
+class CtStorage:
+
+    def add(self, title: str) -> Categories:
+        add_project = Categories(title=title)
+        db_session.add(add_project)
+        db_session.commit()
+        return add_project
