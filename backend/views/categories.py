@@ -3,7 +3,7 @@ from uuid import uuid4
 
 from flask import Blueprint, abort, jsonify, request
 
-from backend.storages.categories import CategoryStorage
+from backend.storages.categories import CategoryStorage, CtStorage
 
 view = Blueprint('categories', __name__)
 
@@ -53,6 +53,7 @@ init_categories = [
 
 
 storage = CategoryStorage(init_categories)
+ctstorage = CtStorage()
 
 
 @view.get('/')
@@ -71,13 +72,13 @@ def get_categories_by_id(uid):
 
 @view.post('/')
 def add_categories():
-    payload = request.json
-    if not payload:
+    category = request.json
+    if not category:
         abort(HTTPStatus.BAD_REQUEST)
 
-    category = storage.add(payload)
+    new_category = ctstorage.add(category['title'])
 
-    return jsonify(category), 200
+    return jsonify({'title': new_category.title, 'id': new_category.id}), 200
 
 
 @view.put('/<string:uid>')
