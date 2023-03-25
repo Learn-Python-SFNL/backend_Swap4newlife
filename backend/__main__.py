@@ -1,6 +1,8 @@
 import logging
+from http import HTTPStatus
 
 from flask import Flask, jsonify
+from pydantic import ValidationError
 
 from backend.db import db_session
 from backend.errors import AppError
@@ -15,6 +17,11 @@ APP_PORT = 8000
 @app.errorhandler(AppError)
 def handle_app_error(error: AppError):
     return jsonify(error=str(error)), error.status
+
+
+@app.errorhandler(ValidationError)
+def handle_validation_error(error: ValidationError):
+    return jsonify(error=str(error)), HTTPStatus.UNPROCESSABLE_ENTITY
 
 
 def main():
