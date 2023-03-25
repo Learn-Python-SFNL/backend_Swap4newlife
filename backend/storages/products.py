@@ -21,16 +21,19 @@ class PgStorage:
     def get_all(self) -> list[Product]:
         return Product.query.all()
 
+    # TODO: добавить  not_foudn.error
     def get_by_id(self, uid: int) -> Product:
         return Product.query.get(uid)
 
-    def update(self, payload: dict[str, Any], uid: int) -> Product:
+    # TODO: добавить conflict.erro, not_foudn.error
+    def update(self, uid: int, title: str, products: str) -> Product:
         product_update = Product.query.get(uid)
-        product_update.title = payload['title']
-        product_update.products = payload['products']
+        product_update.title = title
+        product_update.products = products
         db_session.commit()
         return product_update
 
+    # TODO: добавить  not_foudn.error
     def delete(self, uid: int) -> bool:
         delete_product = Product.query.get(uid)
         if not delete_product:

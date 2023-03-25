@@ -2,6 +2,7 @@ from http import HTTPStatus
 
 from flask import Blueprint, abort, jsonify, request
 
+from backend import schemas
 from backend.storages.products import PgStorage
 
 view = Blueprint('products', __name__)
@@ -14,11 +15,7 @@ pgstorage = PgStorage()
 def get_all_products():
     products = pgstorage.get_all()
     all_products = [
-        {
-            'title': product.title,
-            'id': product.id,
-            'products': product.products,
-        }
+        schemas.Product.from_orm(product).dict()
         for product in products
     ]
 
@@ -28,15 +25,8 @@ def get_all_products():
 @view.get('/<string:uid>')
 def get_product_by_id(uid):
     product = pgstorage.get_by_id(uid)
-    if not product:
-        abort(HTTPStatus.NOT_FOUND)
 
-    return jsonify(
-        {
-            'title': product.title,
-            'products': product.products,
-            'id': product.id,
-        }), 200
+    return jsonify(schemas.Product.from_orm(product).dict()), 200
 
 
 @view.post('/')
@@ -45,13 +35,11 @@ def add_product():
     if not payload:
         abort(HTTPStatus.BAD_REQUEST)
 
-    product = pgstorage.add(payload['title'], payload['products'])
-    return jsonify(
-        {
-            'title': product.title,
-            'products': product.products,
-            'id': product.id,
-        }), 200
+    payload['id'] = -1
+    new_product = schemas.Product(**payload)
+
+    product = pgstorage.add(new_product.title, new_product.products)
+    return jsonify(schemas.Product.from_orm(product).dict()), 200
 
 
 @view.put('/<string:uid>')
@@ -60,21 +48,14 @@ def update_product(uid):
     if not payload:
         abort(HTTPStatus.BAD_REQUEST)
 
-    product = pgstorage.update(payload, uid)
-    if not product:
-        abort(HTTPStatus.NOT_FOUND)
+    new_product = schemas.Product(**payload)
+    product = pgstorage.update(uid, title=new_product.title, products=new_product.products)
 
-    return jsonify(
-        {
-            'title': product.title,
-            'products': product.products,
-            'id': product.id,
-        }), 200
+    return jsonify(schemas.Product.from_orm(product).dict()), 200
 
 
 @view.delete('/<string:uid>')
 def delete_product(uid):
-    if not pgstorage.delete(uid):
-        abort(HTTPStatus.NOT_FOUND)
+    pgstorage.delete(uid)
 
     return {}, 204
