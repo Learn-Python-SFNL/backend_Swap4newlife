@@ -1,34 +1,41 @@
-from uuid import uuid4
+from typing import Any
+
+from sqlalchemy.exc import IntegrityError
+
+from backend.db import db_session
+from backend.errors import ConflictError
+from backend.models import Product
 
 
-class ProductStorage:
+class PgStorage:
 
-    def __init__(self, products) -> None:
-        self.storage = {product['id']: product for product in products}
+    def add(self, title: str, products: str) -> Product:
+        add_product = Product(title=title, products=products)
+        db_session.add(add_product)
+        try:
+            db_session.commit()
+        except IntegrityError:
+            raise ConflictError(entity='products', method='add')
+        return add_product
 
-    def get_all(self):
-        return list(self.storage.values())
+    def get_all(self) -> list[Product]:
+        return Product.query.all()
 
-    def get_by_id(self, uid: str):
-        self.product = self.storage.get(uid)
-        return self.product
+    def get_by_id(self, uid: int) -> Product:
+        return Product.query.get(uid)
 
-    def add(self, product):
-        product['id'] = uuid4().hex
-        self.storage[product['id']] = product
-        return product
+    def update(self, payload: dict[str, Any], uid: int) -> Product:
+        product_update = Product.query.get(uid)
+        product_update.title = payload['title']
+        product_update.products = payload['products']
+        db_session.commit()
+        return product_update
 
-    def update(self, uid: str, new_product):
-        old_product = self.storage.get(uid)
-        if not old_product:
-            return None
-
-        old_product.update(new_product)
-        return old_product
-
-    def delete(self, uid: str) -> bool:
-        if uid not in self.storage:
+    def delete(self, uid: int) -> bool:
+        delete_product = Product.query.get(uid)
+        if not delete_product:
             return False
 
-        self.storage.pop(uid)
+        db_session.delete(delete_product)
+        db_session.commit()
         return True
