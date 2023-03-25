@@ -102,12 +102,50 @@
     "_id": "735e5cb0-dcba-4137-9204-f51634d6aea1",
     "colId": "9f964e59-53a8-4132-96f3-81c63e920947",
     "containerId": "",
+    "name": "add_category",
+    "url": "{{endpoint}}/api/v1/categories/",
+    "method": "POST",
+    "sortNum": 40000,
+    "created": "2023-03-13T18:43:10.365Z",
+    "modified": "2023-03-13T18:45:24.714Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"title\": \"фисташковое мороженное\"\n}\n\n",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "77149634-9a38-4a37-b44d-d7590d50d1e3",
+    "colId": "42aa7772-82a6-4b8c-b82d-a242c28131ff",
+    "containerId": "",
+    "name": "del",
+    "url": "{{endpoint}}/api/v1/categories/373673c2f391450da5a0a44c3fa6ede3",
+    "method": "DELETE",
+    "sortNum": 50000,
+    "created": "2023-03-13T18:45:42.167Z",
+    "modified": "2023-03-13T18:49:11.603Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "\n",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "735e5cb0-dcba-4137-9204-f51634d6aea1",
+    "colId": "9f964e59-53a8-4132-96f3-81c63e920947",
+    "containerId": "",
     "name": "get_product",
-    "url": "{{endpoint}}/api/v1/products/b896574a4620469b81ab161b7e933437",
+    "url": "{{endpoint}}/api/v1/products/5",
     "method": "GET",
     "sortNum": 20000,
     "created": "2023-03-14T11:27:24.424Z",
-    "modified": "2023-03-16T17:40:05.435Z",
+    "modified": "2023-03-25T10:46:34.347Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -121,12 +159,12 @@
     "method": "POST",
     "sortNum": 30000,
     "created": "2023-03-14T11:30:05.007Z",
-    "modified": "2023-03-14T11:36:19.495Z",
+    "modified": "2023-03-25T10:48:03.711Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"products\": \"Книга\",\n    \"title\": \"Книга по css\"\n}",
+      "raw": "{\n  \"products\": \"Книга\",\n    \"title\": \"Какая-то книга\"\n}",
       "form": []
     },
     "tests": []
@@ -136,16 +174,16 @@
     "colId": "9f964e59-53a8-4132-96f3-81c63e920947",
     "containerId": "",
     "name": "update",
-    "url": "{{endpoint}}/api/v1/products/f38cd61e92c9474a8242829c36a70a57",
+    "url": "{{endpoint}}/api/v1/products/9",
     "method": "PUT",
     "sortNum": 40000,
     "created": "2023-03-14T17:50:35.107Z",
-    "modified": "2023-03-16T17:40:40.994Z",
+    "modified": "2023-03-25T10:48:25.364Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"products\": \"Книга\",\n    \"title\": \"Книга по c++\"\n}",
+      "raw": "{\n  \"products\": \"Книга\",\n    \"title\": \"Книга по js\"\n}",
       "form": []
     },
     "tests": []
@@ -155,11 +193,11 @@
     "colId": "9f964e59-53a8-4132-96f3-81c63e920947",
     "containerId": "",
     "name": "delete",
-    "url": "{{endpoint}}/api/v1/products/b896574a4620469b81ab161b7e933437",
+    "url": "{{endpoint}}/api/v1/products/9",
     "method": "DELETE",
     "sortNum": 25000,
     "created": "2023-03-14T18:11:12.083Z",
-    "modified": "2023-03-16T17:40:15.639Z",
+    "modified": "2023-03-25T10:49:55.547Z",
     "headers": [],
     "params": [],
     "tests": []
