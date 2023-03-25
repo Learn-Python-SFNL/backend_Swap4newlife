@@ -2,6 +2,7 @@ import logging
 
 from flask import Flask, jsonify
 
+from backend.db import db_session
 from backend.errors import AppError
 from backend.views import categories, products
 
@@ -21,7 +22,14 @@ def main():
     logger.info('hello world')
     app.register_blueprint(categories.view, url_prefix='/api/v1/categories')
     app.register_blueprint(products.view, url_prefix='/api/v1/products')
+
+    app.teardown_appcontext(shutdown_session)
+
     app.run(port=APP_PORT)
+
+
+def shutdown_session(exception=None):
+    db_session.remove()
 
 
 if __name__ == '__main__':
