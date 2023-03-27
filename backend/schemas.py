@@ -8,3 +8,11 @@ class Product(BaseModel):
 
     class Config:
         orm_mode = True
+
+
+class User(BaseModel):
+    tgid: int
+    username: str
+
+    class Config:
+        orm_mode = True

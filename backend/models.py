@@ -33,5 +33,17 @@ class Product(Base):
         return f'Products {self.id} {self.title} {self.category_id}'
 
 
+class User(Base):
+
+    __tablename__ = 'users'
+
+    id = Column(Integer, primary_key=True)
+    tgid = Column(Integer, unique=True)
+    username = Column(String, unique=True, nullable=False)
+
+    def __repr__(self):
+        return f'Users {self.id} {self.tgid} {self.username}'
+
+
 if __name__ == '__main__':
     Base.metadata.create_all(bind=engine)
