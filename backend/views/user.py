@@ -16,7 +16,9 @@ def add_user():
     if not payload:
         abort(HTTPStatus.BAD_REQUEST)
 
+    payload['id'] = -1
     new_user = schemas.User(**payload)
+
     user = pgstorage.add(new_user.tgid, new_user.username)
 
     return jsonify(schemas.User.from_orm(user).dict())

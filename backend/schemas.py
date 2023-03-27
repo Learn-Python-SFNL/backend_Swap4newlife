@@ -11,6 +11,7 @@ class Product(BaseModel):
 
 
 class User(BaseModel):
+    id: int
     tgid: int
     username: str
 

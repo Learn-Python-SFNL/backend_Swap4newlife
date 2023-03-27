@@ -38,7 +38,7 @@ class User(Base):
     __tablename__ = 'users'
 
     id = Column(Integer, primary_key=True)
-    tgid = Column(Integer, unique=True)
+    tgid = Column(Integer, unique=True, nullable=False)
     username = Column(String, unique=True, nullable=False)
 
     def __repr__(self):
