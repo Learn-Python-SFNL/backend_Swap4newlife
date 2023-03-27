@@ -169,11 +169,11 @@
     "colId": "9f964e59-53a8-4132-96f3-81c63e920947",
     "containerId": "",
     "name": "get_by_id",
-    "url": "{{endpoint}}/api/v1/products/3",
+    "url": "{{endpoint}}/api/v1/products/2",
     "method": "GET",
     "sortNum": 17500,
     "created": "2023-03-25T11:16:49.553Z",
-    "modified": "2023-03-25T13:00:53.814Z",
+    "modified": "2023-03-27T13:18:47.236Z",
     "headers": [],
     "params": [],
     "tests": []
