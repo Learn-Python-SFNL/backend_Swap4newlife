@@ -25,32 +25,34 @@ class PgStorage:
         return Product.query.all()
 
     def get_by_id(self, uid: int) -> Product:
-        products_uid = Product.query.get(uid)
-        if not products_uid:
+        product = Product.query.get(uid)
+        if not product:
             raise NotfoundError(entity='pruducts', method='get_by_id')
-        return products_uid
+        return product
 
     def update(self, uid: int, title: str, category_id: int) -> Product:
-        product_update = Product.query.get(uid)
-        if not product_update:
+        product = Product.query.get(uid)
+        if not product:
             raise NotfoundError(entity='products', method='update')
-        product_update.title = title
-        product_update.category_id = category_id
+        product.title = title
+        product.category_id = category_id
         try:
             db_session.commit()
         except IntegrityError:
             logger.exception('Can not update product')
             raise ConflictError(entity='products', method='update')
-        return product_update
+        return product
 
-    # TODO: добавить  not_foudn.error, conflict.error
     def delete(self, uid: int):
-        delete_product = Product.query.get(uid)
-        if not delete_product:
+        product = Product.query.get(uid)
+        if not product:
             raise NotfoundError(entity='products', method='delete')
-        db_session.delete(delete_product)
+        db_session.delete(product)
         try:
             db_session.commit()
         except IntegrityError:
             logger.exception('Can not delete product')
             raise ConflictError(entity='products', method='delete')
+
+
+class
