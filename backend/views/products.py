@@ -39,6 +39,7 @@ def add_product():
     new_product = schemas.Product(**payload)
 
     product = pgstorage.add(new_product.title, new_product.category_id)
+
     return jsonify(schemas.Product.from_orm(product).dict()), 200
 
 
