@@ -53,6 +53,3 @@ class PgStorage:
         except IntegrityError:
             logger.exception('Can not delete product')
             raise ConflictError(entity='products', method='delete')
-
-
-class

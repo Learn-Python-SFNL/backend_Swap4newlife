@@ -6,7 +6,7 @@ from pydantic import ValidationError
 
 from backend.db import db_session
 from backend.errors import AppError
-from backend.views import categories, products
+from backend.views import categories, products, user
 
 logger = logging.getLogger(__name__)
 
@@ -29,6 +29,7 @@ def main():
     logger.info('hello world')
     app.register_blueprint(categories.view, url_prefix='/api/v1/categories')
     app.register_blueprint(products.view, url_prefix='/api/v1/products')
+    app.register_blueprint(user.view, url_prefix='/api/v1/users')
 
     app.teardown_appcontext(shutdown_session)
 
