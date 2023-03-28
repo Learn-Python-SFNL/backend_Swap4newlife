@@ -1,9 +1,6 @@
 import logging
 
-# from sqlalchemy.exc import IntegrityError
-
 from backend.db import db_session
-# from backend.errors import ConflictError, NotfoundError
 from backend.models import Category
 
 logger = logging.getLogger(__name__)
