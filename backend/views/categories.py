@@ -47,7 +47,6 @@ def update_categories(uid):
     if not payload:
         abort(HTTPStatus.BAD_REQUEST)
 
-    payload['id'] = -1
     new_category = schemas.Category(**payload)
     category = ctstorage.update(uid, title=new_category.title)
     return jsonify(schemas.Category.from_orm(category).dict()), 200
