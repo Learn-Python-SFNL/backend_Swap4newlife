@@ -10,6 +10,14 @@ class Product(BaseModel):
         orm_mode = True
 
 
+class Category(BaseModel):
+    id: int
+    title: str
+
+    class Config:
+        orm_mode = True
+
+
 class User(BaseModel):
     id: int
     tgid: int
