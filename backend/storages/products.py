@@ -27,7 +27,7 @@ class PgStorage:
     def get_by_id(self, uid: int) -> Product:
         product = Product.query.get(uid)
         if not product:
-            raise NotfoundError(entity='pruducts', method='get_by_id')
+            raise NotfoundError(entity='products', method='get_by_id')
         return product
 
     def update(self, uid: int, title: str, category_id: int) -> Product:

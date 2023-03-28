@@ -32,11 +32,11 @@
     "colId": "42aa7772-82a6-4b8c-b82d-a242c28131ff",
     "containerId": "",
     "name": "get_by_id",
-    "url": "{{endpoint}}/api/v1/categories/3",
+    "url": "{{endpoint}}/api/v1/categories/9",
     "method": "GET",
     "sortNum": 30000,
     "created": "2023-03-13T18:42:28.193Z",
-    "modified": "2023-03-25T10:26:44.626Z",
+    "modified": "2023-03-28T07:27:56.600Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -50,45 +50,12 @@
     "method": "POST",
     "sortNum": 40000,
     "created": "2023-03-13T18:43:10.365Z",
-    "modified": "2023-03-25T13:00:03.053Z",
+    "modified": "2023-03-28T09:36:14.351Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"title\": \"книги\"\n}\n\n",
-      "form": []
-    },
-    "tests": []
-  },
-  {
-    "_id": "77149634-9a38-4a37-b44d-d7590d50d1e3",
-    "colId": "42aa7772-82a6-4b8c-b82d-a242c28131ff",
-    "containerId": "",
-    "name": "del",
-    "url": "{{endpoint}}/api/v1/categories/1",
-    "method": "DELETE",
-    "sortNum": 50000,
-    "created": "2023-03-13T18:45:42.167Z",
-    "modified": "2023-03-25T13:02:07.143Z",
-    "headers": [],
-    "params": [],
-    "tests": []
-  },
-  {
-    "_id": "77149634-9a38-4a37-b44d-d7590d50d1e3",
-    "colId": "42aa7772-82a6-4b8c-b82d-a242c28131ff",
-    "containerId": "",
-    "name": "del",
-    "url": "{{endpoint}}/api/v1/categories/373673c2f391450da5a0a44c3fa6ede3",
-    "method": "DELETE",
-    "sortNum": 50000,
-    "created": "2023-03-13T18:45:42.167Z",
-    "modified": "2023-03-13T18:49:11.603Z",
-    "headers": [],
-    "params": [],
-    "body": {
-      "type": "json",
-      "raw": "\n",
+      "raw": "{\n  \"title\": \"Вах какие лучшие Ковры\"\n}\n\n",
       "form": []
     },
     "tests": []
@@ -98,16 +65,16 @@
     "colId": "42aa7772-82a6-4b8c-b82d-a242c28131ff",
     "containerId": "",
     "name": "update",
-    "url": "{{endpoint}}/api/v1/categories/3",
+    "url": "{{endpoint}}/api/v1/categories/9",
     "method": "PUT",
     "sortNum": 35000,
     "created": "2023-03-13T18:46:00.261Z",
-    "modified": "2023-03-25T10:28:49.023Z",
+    "modified": "2023-03-28T13:21:37.725Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"title\": \"круассан c шоколадом\"\n}",
+      "raw": "{\n  \"id\": \"9\",\n  \"title\": \"Плюшевые динозавры\"\n}",
       "form": []
     },
     "tests": []
@@ -195,6 +162,20 @@
       "raw": "{\n  \"id\": 2,\n  \"tgid\": 5,\n  \"username\": \"Нуб3\"\n}",
       "form": []
     },
+    "tests": []
+  },
+  {
+    "_id": "221a9b3e-718b-4701-854b-fd1acab0c4ce",
+    "colId": "42aa7772-82a6-4b8c-b82d-a242c28131ff",
+    "containerId": "",
+    "name": "delete_category",
+    "url": "{{endpoint}}/api/v1/categories/16",
+    "method": "DELETE",
+    "sortNum": 32500,
+    "created": "2023-03-28T07:09:09.461Z",
+    "modified": "2023-03-28T12:45:59.117Z",
+    "headers": [],
+    "params": [],
     "tests": []
   }
 ]
