@@ -1,7 +1,12 @@
-from typing import Any
+import logging
+
+# from sqlalchemy.exc import IntegrityError
 
 from backend.db import db_session
+# from backend.errors import ConflictError, NotfoundError
 from backend.models import Category
+
+logger = logging.getLogger(__name__)
 
 
 class CtStorage:
@@ -18,11 +23,11 @@ class CtStorage:
     def get_by_id(self, uid) -> Category:
         return Category.query.get(uid)
 
-    def update(self, payload: dict[str, Any], uid: int) -> Category:
-        category_update = Category.query.get(uid)
-        category_update.title = payload['title']
+    def update(self, uid: int, title: str) -> Category:
+        category = Category.query.get(uid)
+        category.title = title
         db_session.commit()
-        return category_update
+        return category
 
     def delete(self, uid: int) -> bool:
         category_delete = Category.query.get(uid)
