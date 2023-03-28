@@ -12,11 +12,11 @@ ctstorage = CtStorage()
 
 
 @view.get('/')
-def get_all_categories():
-    categories = ctstorage.get_all()
+def categories():
+    category = ctstorage.get_all()
     all_categories = [
         schemas.Category.from_orm(category).dict()
-        for category in categories
+        for category in category
     ]
     return jsonify(all_categories)
 
@@ -37,7 +37,7 @@ def add_categories():
     payload['id'] = -1
     new_category = schemas.Category(**payload)
 
-    category = ctstorage.add(new_category.id, new_category.title)
+    category = ctstorage.add(new_category.title)
     return jsonify(schemas.Category.from_orm(category).dict()), 200
 
 
@@ -47,8 +47,9 @@ def update_categories(uid):
     if not payload:
         abort(HTTPStatus.BAD_REQUEST)
 
+    payload['id'] = -1
     new_category = schemas.Category(**payload)
-    category = ctstorage.update(uid=uid, title=new_category.title)
+    category = ctstorage.update(uid, title=new_category.title)
     return jsonify(schemas.Category.from_orm(category).dict()), 200
 
 
