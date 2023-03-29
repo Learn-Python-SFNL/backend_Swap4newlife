@@ -13,6 +13,15 @@ ctstorage = CtStorage()
 
 @view.get('/')
 def categories():
+    args = request.args
+    title = args.get('title')
+    if title:
+        category = ctstorage.get_by_title(title)
+        new_category = [
+            schemas.Category.from_orm(category).dict() for category in category
+        ]
+        return jsonify(new_category)
+
     category = ctstorage.get_all()
     all_categories = [
         schemas.Category.from_orm(category).dict()
