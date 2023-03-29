@@ -17,6 +17,9 @@ class CtStorage:
     def get_all(self) -> list[Category]:
         return Category.query.all()
 
+    def get_by_title(self, name):
+        return Category.query.filter(Category.title == name).all()
+
     def get_by_id(self, uid) -> Category:
         return Category.query.get(uid)
 
