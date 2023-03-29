@@ -177,5 +177,25 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "cabb42a6-ba5f-48cd-b1c8-ab3ca0b82232",
+    "colId": "42aa7772-82a6-4b8c-b82d-a242c28131ff",
+    "containerId": "",
+    "name": "get_by_title",
+    "url": "{{endpoint}}/api/v1/categories/?title=Лошадки",
+    "method": "GET",
+    "sortNum": 31250,
+    "created": "2023-03-29T12:32:20.242Z",
+    "modified": "2023-03-29T12:37:45.163Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "title",
+        "value": "Лошадки",
+        "isPath": false
+      }
+    ],
+    "tests": []
   }
 ]
