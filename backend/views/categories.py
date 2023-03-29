@@ -14,9 +14,9 @@ ctstorage = CtStorage()
 @view.get('/')
 def categories():
     args = request.args
-    args_title = args.get('title')
-    if args_title:
-        category = ctstorage.get_by_title(args_title)
+    title = args.get('title')
+    if title:
+        category = ctstorage.get_by_title(title)
         new_category = [
             schemas.Category.from_orm(category).dict() for category in category
         ]
