@@ -1,7 +1,7 @@
 import logging
 
 from backend.db import db_session
-from backend.models import Category
+from backend.models import Category, Product
 
 logger = logging.getLogger(__name__)
 
@@ -22,6 +22,9 @@ class CtStorage:
 
     def get_by_id(self, uid) -> Category:
         return Category.query.get(uid)
+
+    def get_products_by_category(self, uid: int):
+        return Product.query.filter(Product.category_id == uid)
 
     def update(self, uid: int, title: str) -> Category:
         category = Category.query.get(uid)

@@ -96,5 +96,19 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "db49022f-7d53-4300-938d-5f5e8a4fb91b",
+    "colId": "history",
+    "containerId": "",
+    "name": "https://www.thunderclient.com/welcome",
+    "url": "https://www.thunderclient.com/welcome",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-04-05T18:19:04.740Z",
+    "modified": "2023-04-05T18:19:04.740Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
