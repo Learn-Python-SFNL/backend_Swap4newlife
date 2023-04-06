@@ -30,16 +30,6 @@ def categories():
     return jsonify(all_categories)
 
 
-@view.get('/<int:uid>/products/')
-def get_products(uid):
-    products = ctstorage.get_products_by_category(uid)
-    products_in_category = [
-        schemas.Product.from_orm(product).dict()
-        for product in products
-    ]
-    return jsonify(products_in_category)
-
-
 @view.get('/<string:uid>')
 def get_categories_by_id(uid):
     category = ctstorage.get_by_id(uid)
