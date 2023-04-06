@@ -197,5 +197,19 @@
       }
     ],
     "tests": []
+  },
+  {
+    "_id": "bd67b655-973a-4328-9e92-f437b4b23318",
+    "colId": "42aa7772-82a6-4b8c-b82d-a242c28131ff",
+    "containerId": "",
+    "name": "get_products_by_category",
+    "url": "{{endpoint}}/api/v1/categories/4/products/",
+    "method": "GET",
+    "sortNum": 31875,
+    "created": "2023-04-06T11:35:38.768Z",
+    "modified": "2023-04-06T11:36:10.663Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
