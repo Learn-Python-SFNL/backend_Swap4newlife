@@ -37,6 +37,16 @@ def get_categories_by_id(uid):
     return jsonify(schemas.Category.from_orm(category).dict()), 200
 
 
+@view.get('/<int:uid>/products/')
+def get_products(uid):
+    products = ctstorage.get_products_by_category(uid)
+    products_in_category = [
+        schemas.Product.from_orm(product).dict()
+        for product in products
+    ]
+    return jsonify(products_in_category)
+
+
 @view.post('/')
 def add_categories():
     payload = request.json
