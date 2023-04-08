@@ -22,3 +22,9 @@ def add_user():
     user = pgstorage.add(new_user.tgid, new_user.username)
 
     return jsonify(schemas.User.from_orm(user).dict())
+
+
+@view.get('/telegram/<int:uid>')
+def get_by_tgid(uid):
+    user = pgstorage.get_by_tgid(tgid=uid)
+    return jsonify(schemas.User.from_orm(user).dict())
