@@ -29,6 +29,13 @@ class Product(Base):
     )
     category = relationship('Category', back_populates='products')
 
+    user_id = Column(
+        Integer,
+        ForeignKey('users.id', onupdate='RESTRICT', ondelete='RESTRICT'),
+        nullable=False,
+    )
+    user = relationship('User', back_populates='products')
+
     def __repr__(self):
         return f'Products {self.id} {self.title} {self.category_id}'
 
@@ -40,6 +47,7 @@ class User(Base):
     id = Column(Integer, primary_key=True)
     tgid = Column(Integer, unique=True, nullable=False)
     username = Column(String, unique=True, nullable=False)
+    products = relationship('Product', back_populates='user')
 
     def __repr__(self):
         return f'Users {self.id} {self.tgid} {self.username}'
