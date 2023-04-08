@@ -11,8 +11,12 @@ logger = logging.getLogger(__name__)
 
 class PgStorage:
 
-    def add(self, title: str, category_id: int) -> Product:
-        add_product = Product(title=title, category_id=category_id)
+    def add(self, title: str, category_id: int, user_id: int) -> Product:
+        add_product = Product(
+            title=title,
+            category_id=category_id,
+            user_id=user_id,
+        )
         db_session.add(add_product)
         try:
             db_session.commit()

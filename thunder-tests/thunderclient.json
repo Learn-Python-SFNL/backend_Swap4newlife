@@ -50,12 +50,12 @@
     "method": "POST",
     "sortNum": 40000,
     "created": "2023-03-13T18:43:10.365Z",
-    "modified": "2023-03-28T09:36:14.351Z",
+    "modified": "2023-04-07T17:05:03.774Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"title\": \"Вах какие лучшие Ковры\"\n}\n\n",
+      "raw": "{\n  \"title\": \"Мебель\"\n}\n\n",
       "form": []
     },
     "tests": []
@@ -88,12 +88,12 @@
     "method": "POST",
     "sortNum": 30000,
     "created": "2023-03-14T11:30:05.007Z",
-    "modified": "2023-03-27T15:46:23.091Z",
+    "modified": "2023-04-08T15:06:34.100Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"category_id\": 1,\n    \"title\": \"Какая-то книга по jsы \"\n}",
+      "raw": "{\n  \"category_id\": 1,\n    \"title\": \"Джон Уик\",\n  \"user_id\": 1\n}",
       "form": []
     },
     "tests": []
@@ -154,12 +154,12 @@
     "method": "POST",
     "sortNum": 10000,
     "created": "2023-03-27T15:24:42.311Z",
-    "modified": "2023-03-27T16:01:50.555Z",
+    "modified": "2023-04-07T16:46:22.549Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"id\": 2,\n  \"tgid\": 5,\n  \"username\": \"Нуб3\"\n}",
+      "raw": "{\n  \"id\": 1,\n  \"tgid\": 1,\n  \"username\": \"Нуб3\"\n}",
       "form": []
     },
     "tests": []
@@ -203,11 +203,11 @@
     "colId": "42aa7772-82a6-4b8c-b82d-a242c28131ff",
     "containerId": "",
     "name": "get_products_by_category",
-    "url": "{{endpoint}}/api/v1/categories/4/products/",
+    "url": "{{endpoint}}/api/v1/categories/2/products/",
     "method": "GET",
     "sortNum": 31875,
     "created": "2023-04-06T11:35:38.768Z",
-    "modified": "2023-04-06T11:36:10.663Z",
+    "modified": "2023-04-06T11:47:13.281Z",
     "headers": [],
     "params": [],
     "tests": []
