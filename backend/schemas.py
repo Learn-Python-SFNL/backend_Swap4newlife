@@ -26,3 +26,11 @@ class User(BaseModel):
 
     class Config:
         orm_mode = True
+
+
+class Choose(BaseModel):
+    source_product_id: int
+    target_product_id: int
+
+    class Config:
+        orm_mode = True
