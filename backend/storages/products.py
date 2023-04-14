@@ -34,6 +34,9 @@ class PgStorage:
             raise NotfoundError(entity='products', method='get_by_id')
         return product
 
+    def get_for_user(self, uid: int) -> list[Product]:
+        return Product.query.filter(Product.user_id == uid).all()
+
     def update(self, uid: int, title: str, category_id: int) -> Product:
         product = Product.query.get(uid)
         if not product:

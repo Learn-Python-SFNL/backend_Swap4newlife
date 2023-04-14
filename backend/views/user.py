@@ -4,10 +4,11 @@ from flask import Blueprint, abort, jsonify, request
 
 from backend import schemas
 from backend.storages.user import UserStorage
-
+from backend.storages.products import PgStorage
 view = Blueprint('users', __name__)
 
-pgstorage = UserStorage()
+urstorage = UserStorage()
+pgstorage = PgStorage()
 
 
 @view.post('/')
@@ -19,20 +20,20 @@ def add_user():
     payload['id'] = -1
     new_user = schemas.User(**payload)
 
-    user = pgstorage.add(new_user.tgid, new_user.username)
+    user = urstorage.add(new_user.tgid, new_user.username)
 
     return jsonify(schemas.User.from_orm(user).dict())
 
 
 @view.get('/telegram/<int:uid>')
 def get_by_tgid(uid):
-    user = pgstorage.get_by_tgid(tgid=uid)
+    user = urstorage.get_by_tgid(tgid=uid)
     return jsonify(schemas.User.from_orm(user).dict())
 
 
 @view.get('/<int:uid>/products/')
 def get_by_product(uid):
-    products = pgstorage.get_product_by_user(uid=uid)
+    products = pgstorage.get_for_user(uid=uid)
     products_in_user = [
         schemas.Product.from_orm(product).dict()
         for product in products
