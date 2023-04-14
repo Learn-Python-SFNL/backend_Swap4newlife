@@ -203,11 +203,11 @@
     "colId": "42aa7772-82a6-4b8c-b82d-a242c28131ff",
     "containerId": "",
     "name": "get_products_by_category",
-    "url": "{{endpoint}}/api/v1/categories/2/products/",
+    "url": "{{endpoint}}/api/v1/categories/1/products/",
     "method": "GET",
     "sortNum": 31875,
     "created": "2023-04-06T11:35:38.768Z",
-    "modified": "2023-04-06T11:47:13.281Z",
+    "modified": "2023-04-14T09:39:37.210Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -221,14 +221,28 @@
     "method": "POST",
     "sortNum": 10000,
     "created": "2023-04-11T12:45:46.470Z",
-    "modified": "2023-04-11T15:19:06.480Z",
+    "modified": "2023-04-13T13:54:18.143Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"source_product_id\": 3,\n  \"target_product_id\": 4\n}",
+      "raw": "{\n  \"source_product_id\": 1,\n  \"target_product_id\": 2\n}",
       "form": []
     },
+    "tests": []
+  },
+  {
+    "_id": "e0ffcf97-2d60-4dd9-aaa1-f0f843fc6092",
+    "colId": "7b3f6acc-052c-4da3-8cbc-aaf00a9275aa",
+    "containerId": "",
+    "name": "get_products_by_user",
+    "url": "{{endpoint}}/api/v1/users/3/products/",
+    "method": "GET",
+    "sortNum": 20000,
+    "created": "2023-04-14T09:35:55.851Z",
+    "modified": "2023-04-14T09:41:04.952Z",
+    "headers": [],
+    "params": [],
     "tests": []
   }
 ]
