@@ -3,8 +3,9 @@ from http import HTTPStatus
 from flask import Blueprint, abort, jsonify, request
 
 from backend import schemas
-from backend.storages.user import UserStorage
 from backend.storages.products import PgStorage
+from backend.storages.user import UserStorage
+
 view = Blueprint('users', __name__)
 
 urstorage = UserStorage()
