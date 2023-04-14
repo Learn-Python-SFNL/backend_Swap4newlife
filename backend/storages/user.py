@@ -4,7 +4,7 @@ from sqlalchemy.exc import IntegrityError
 
 from backend.db import db_session
 from backend.errors import ConflictError
-from backend.models import User
+from backend.models import Product, User
 
 logger = logging.getLogger(__name__)
 
@@ -23,3 +23,6 @@ class UserStorage:
 
     def get_by_tgid(self, tgid) -> User:
         return User.query.filter(User.tgid == tgid).first()
+
+    def get_product_by_user(self, uid: int) -> Product:
+        return Product.query.filter(Product.user_id == uid).all()

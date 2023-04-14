@@ -28,3 +28,13 @@ def add_user():
 def get_by_tgid(uid):
     user = pgstorage.get_by_tgid(tgid=uid)
     return jsonify(schemas.User.from_orm(user).dict())
+
+
+@view.get('/<int:uid>/products/')
+def get_by_product(uid):
+    products = pgstorage.get_product_by_user(uid=uid)
+    products_in_user = [
+        schemas.Product.from_orm(product).dict()
+        for product in products
+    ]
+    return jsonify(products_in_user)
